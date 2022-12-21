@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     #libs
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
+    
     
     #apps
     'applications.account',
@@ -138,6 +140,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.CustomUser'
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
+
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=500),
@@ -148,6 +156,10 @@ SIMPLE_JWT = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_USER_TLS = True
+EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER =  config('EMAIL_HOST_USER')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
