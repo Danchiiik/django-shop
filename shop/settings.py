@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'django_filters',
+    'drf_yasg',
     
     
     #apps
@@ -163,3 +164,13 @@ EMAIL_HOST_USER =  config('EMAIL_HOST_USER')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS':{
+        'api_key':{
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        }
+    }
+}
